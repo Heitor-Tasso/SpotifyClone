@@ -7,10 +7,11 @@ Caso queira dar uma olhada na PlayList:
  - Primeiro Vídeo: https://youtu.be/X2p9O3L0rB0
  - PlayList https://youtube.com/playlist?list=PLz7mQFeTpQVlH-Mce68_AeQlK-YbvMkp3
 
- <img src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/one.png" alt="IMG"/>
+</div>
+  <h2>EXEMPLOS:</h2>
 
-  <img src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/two.png" alt="IMG"/>
-
-  <img src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/three.png" alt="IMG"/>
-
- <img src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/four.png" alt="IMG"/>
+  <img align="center" src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/one.png" alt="IMG"/>
+  <img align="center" src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/two.png" alt="IMG"/>
+  <img align="center" src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/three.png" alt="IMG"/>
+  <img align="center" src="https://github.com/SrGambiarra/SpotifyClone/tree/main/examples/four.png" alt="IMG"/>
+</div>
