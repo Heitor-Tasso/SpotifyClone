@@ -1,0 +1,591 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<RoudedImage>
+    source: ''
+    texture:None
+    radius: [dp(5), 0, 0, dp(5)]
+    canvas:
+        Color:
+            rgba:[1, 1, 1, 1]
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: root.radius
+            texture: root.texture
+    size_hint_x:None
+    width:'70dp'
+
+<RecommendedPlayList>:
+    size_hint_y: None
+    height: '70dp'
+    RoudedImage:
+        source:root.source
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:(*get_color_from_hex('#3f3f3f')[0:-1], 0.9)
+            RoundedRectangle:
+                pos:self.pos
+                size:self.size
+                radius:[0, dp(5), dp(5), 0]
+        AnchorLayout:
+            anchor_y:'center'
+            padding:[dp(10), 0, 0, 0]
+            Label:
+                text:root.name_playlist
+                size_hint_y:None
+                height:'20dp'
+                text_size:self.size
+
+<RectanglePlayList>:
+    size_hint_x:None
+    width:'150dp'
+    orientation: 'vertical'
+    icon_source:''
+    playlist_source:''
+    playlist_name:''
+    Image:
+        source:root.playlist_source
+        allow_stretch:True
+        keep_ratio:False
+    BoxLayout:
+        size_hint_y:0.25
+        Widget:
+            size_hint_x:None
+            width:'10dp'
+        Icon:
+            size_hint_x:0.2
+            img:root.icon_source
+            icon_size:'25dp', '25dp'
+        AnchorLayout:
+            anchor_y:'center'
+            padding:[dp(3), 0, 0, 0]
+            Label:
+                id:label
+                size_hint_y:None
+                height:'20dp'
+                text_size:self.size
+                text:root.playlist_name
+
+<MyScrollView>:
+    bar_color:[0,0,0,0]
+    bar_inactive_color:[0,0,0,0]
+    effect_cls:'ScrollEffect'
+    BoxLayout:
+        size_hint_x:None
+        width:self.minimum_width
+        spacing: '15dp'
+        id:box
+
+<Icon@AnchorLayout>:
+    anchor_y: 'center'
+    anchor_x: 'center'
+    img:''
+    icon_size: '30dp', '30dp'
+    color:[1, 1, 1, 1]
+    BoxLayout:
+        padding: ('5dp', '5dp', '5dp', '5dp')
+        size_hint:None, None
+        size:root.icon_size
+        Image:
+            source:root.img
+            allow_stretch:True
+            keep_ratio:False
+            color:root.color
+
+<ToolBar@BoxLayout>:
+    orientation: 'vertical'
+    size_hint_y:None
+    height:self.minimum_height
+    BoxLayout:
+        size_hint_y:None
+        height:'70dp'
+        AnchorLayout:
+            anchor_y:'center'
+            Label:
+                size_hint_y:None
+                height:'40dp'
+                text_size:self.size
+                text:'Boa Tarde'
+                bold:True
+                font_size:'30sp'
+        BoxLayout:
+            size_hint_x:None
+            width:'110dp'
+            padding:[0, 0, dp(25), 0]
+            spacing: '40dp'
+            Icon:
+                img:'assets/icons/bell-boll.png'
+            Icon:
+                img:'assets/icons/time-clock.png'
+            Icon:
+                img:'assets/icons/settings.png'
+
+<RootNameNoIcon>:
+    orientation: 'vertical'
+    size_hint_y:None
+    height:'250dp'
+    BoxLayout:
+        size_hint_y:None
+        height:'80dp'
+        orientation: 'vertical'
+        AnchorLayout:
+            anchor_y:'center'
+            Label:
+                size_hint_y:None
+                height:'40dp'
+                text_size:self.size
+                text:'Músicas baixadas'
+                bold:True
+                font_size:'30sp'
+
+<RootNameIcon>:
+    size_hint_y:None
+    orientation: 'vertical'
+    height:'300dp'
+    spacing: '10dp'
+    Widget:
+        size_hint_y:None
+        height:'15dp'
+    BoxLayout:
+        size_hint_y:None
+        height:'80dp'
+        AnchorLayout:
+            size_hint_x:None
+            width:'70dp'
+            padding: ('5dp', '5dp', '5dp', '5dp')
+            Image:
+                source:'assets/icons/play.png'
+        AnchorLayout:
+            anchor_y:'center'
+            padding:[dp(10), 0, 0, dp(10)]
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height:self.minimum_height
+                Label:
+                    size_hint_y:None
+                    text_size:self.size
+                    text:'PARECIDO COM'
+                    font_size:'12sp'
+                    height:'25dp'
+                    color:get_color_from_hex('#a0a0a0')
+                Label:
+                    size_hint_y:None
+                    height:'40dp'
+                    text_size:self.size
+                    text:'Linkin Park'
+                    bold:True
+                    font_size:'30sp'
+
+<RecentPlayList>:
+    size_hint_y:None
+    height:'50dp'
+    Image:
+        source:root.source
+        size_hint_x:None
+        width:root.height
+    Widget:
+        size_hint_x:None
+        width:'3dp'
+    BoxLayout:
+        AnchorLayout:
+            anchor_y:'center'
+            padding:[dp(10), 0, 0, 0]
+            BoxLayout:
+                orientation:'vertical'
+                Widget:
+                Label:
+                    text:root.name_playlist
+                    size_hint_y:None
+                    height:'20dp'
+                    font_size:'17sp'
+                    text_size:self.size
+                    color:get_color_from_hex('#eeeeee')
+                Label:
+                    text:root.name_playlist
+                    size_hint_y:None
+                    height:'15dp'
+                    font_size:'11sp'
+                    text_size:self.size
+                    color:get_color_from_hex('#a0a0a0')
+                Widget:
+        Icon:
+            img:'assets/icons/delete.png'
+            size_hint_x:None
+            width:'40dp'
+            icon_size:'35dp', '35dp'
+            color:[1, 1, 1, 1]
+
+
+<SearchDownload>:
+    max_pos: [0, 0]
+    orientation: 'vertical'
+    size_hint_y:None
+    height:'40dp'
+
+<CardPlaylist@BoxLayout>:
+    text_card:''
+    background_color:[1, 0, 0, 1]
+    canvas:
+        Color:
+            rgba:self.background_color
+        RoundedRectangle:
+            pos:self.pos
+            size:self.size
+            radius:[dp(5), dp(5), dp(5), dp(5)]
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint:None, None
+        size: '90dp', '45dp'
+        padding:(dp(10), 0, 0, 0)
+        orientation: 'vertical'
+        Label:
+            id:lbl
+            text_size:self.size
+            text:root.text_card
+            bold:True
+            font_size:'12sp'
+        Widget:
+            size_hint_y:1
+            on_size:
+                self.size_hint_y = 0.8 if len(lbl.text) < 15 else 0.14
+    Widget:
+
+<InteractiveCards>:
+    orientation: 'vertical'
+    size_hint_y:None
+    height:'150dp'
+    spacing: '15dp'
+    Label:
+        id:lbl
+        size_hint_y:None
+        height:'25dp'
+        text_size:self.size
+        bold:True
+        font_size:'14sp'
+    BoxLayout:
+        spacing: '15dp'
+        CardPlaylist:
+            id:card1
+        CardPlaylist:
+            id:card2
+
+<Downloads>:
+    size_hint_y:None
+    height:'40dp'
+    BoxLayout:
+        canvas:
+            Color:
+                rgba:[1, 1, 1, 1]
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[dp(3), dp(3), dp(3), dp(3)]
+        id:pesquisa
+        size_hint:None, None
+        size:root.size
+        Icon:
+            img:'assets/icons/search.png'
+            size_hint_x:None
+            width:'55dp'
+            color:get_color_from_hex('#484747')
+        Widget:
+            size_hint_x:None
+            width:'10dp'
+        Label:
+            text:'Busque nos seus downloads'
+            bold:True
+            color:get_color_from_hex('#484747')
+        Widget:
+
+<Body>:
+    orientation: 'vertical'
+    manager:screens
+    canvas.before:
+        Color:
+            rgba:get_color_from_hex('#121212')
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    ScreenManager:
+        id:screens
+        # on_size:self.current = 'home'
+        Screen:
+            name:'busca'
+            BoxLayout:
+                orientation:'vertical'
+                BoxLayout:
+                    size_hint_y:None
+                    height:'50'
+                    padding: ('5dp', '5dp', '5dp', '5dp')
+                    canvas:
+                        Color:
+                            rgba:get_color_from_hex('#282828')
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+                    BoxLayout:
+                        canvas:
+                            Color:
+                                rgba:get_color_from_hex('#535353')
+                            RoundedRectangle:
+                                size:self.size
+                                pos:self.pos
+                                radius:[dp(3), dp(3), dp(3), dp(3)]
+                        Widget:
+                        Label:
+                            text:'Buscar'
+                            bold:True
+                        Widget:
+                            size_hint_x:0.65
+                        Icon:
+                            img:'assets/icons/camera.png'
+                            size_hint_x:None
+                            width:'40dp'
+                            color:[1, 1, 1, 1]
+                ScrollView:
+                    bar_color:[0,0,0,0]
+                    bar_inactive_color:[0,0,0,0]
+                    effect_cls:'ScrollEffect'
+                    BoxLayout:
+                        orientation:'vertical'
+                        size_hint_y:None
+                        height:self.minimum_height
+                        padding: ('20dp', '0dp', '20dp', '0dp')
+                        Widget:
+                            size_hint_y:None
+                            height:'5dp'
+                        BoxLayout:
+                            size_hint_y:None
+                            height:'40dp'
+                            orientation:'vertical'
+                            Widget:
+                            BoxLayout:
+                                size_hint_y:None
+                                height:'20dp'
+                                Label:
+                                    text_size:self.size
+                                    text:'Buscas recentes'
+                                    bold:True
+                            Widget:
+                        BoxLayout:
+                            orientation:'vertical'
+                            size_hint_y:None
+                            height:self.minimum_height
+                            spacing:'13dp'
+                            id:buscaRecent
+                
+                        BoxLayout:
+                            size_hint_y:None
+                            height:self.minimum_height
+                            BoxLayout:
+                                orientation:'vertical'
+                                size_hint_y:None
+                                height:self.minimum_height
+                                Widget:
+                                    size_hint_y:None
+                                    height:'20dp'
+                                Button:
+                                    background_color:[0, 0, 0, 0]
+                                    size_hint:None, None
+                                    size:'170dp', '10dp'
+                                    text:'Limpar buscas recentes'
+                                    color:get_color_from_hex('#a0a0a0')
+                            Widget:
+                        Widget:
+                            size_hint_y:None
+                            height:'130dp'
+
+        Screen:
+            name:'search'
+            BoxLayout:
+                orientation: 'vertical'
+                ScrollView:
+                    id:scroll
+                    effect_cls:'ScrollEffect'
+                    on_scroll_y: downd.change_pos()
+                    BoxLayout:
+                        size_hint_y:None
+                        height:self.minimum_height
+                        orientation: 'vertical'
+                        spacing: '10dp'
+                        padding: ('10dp', '0dp', '10dp', '0dp')
+                        Widget:
+                            size_hint_y:None
+                            height:'15dp'
+                        Label:
+                            size_hint_y:None
+                            height:'40dp'
+                            text_size:self.size
+                            text:'Buscar'
+                            bold:True
+                            font_size:'30sp'
+                        BoxLayout:
+                            size_hint_y:None
+                            height:self.minimum_height
+                            orientation: 'vertical'
+                            Widget:
+                                size_hint_y:None
+                                height:'5dp'
+                            SearchDownload:
+                                id:downd
+                                max_pos:[self.x, scroll.y + scroll.height - self.height]
+                                scroll:scroll
+                                box:box_scr
+                                on_pos:self.change_pos()
+
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y:None
+                            height:self.minimum_height
+                            id:box_search
+                        Widget:
+                            size_hint_y:None
+                            height:'200dp'
+                FloatLayout:
+                    size_hint_y:None
+                    BoxLayout:
+                        id:box_scr
+                        padding: ('10dp', '0dp', '10dp', '0dp')
+
+        Screen:
+            name:'home'
+            ScrollView:
+                bar_color:[0,0,0,0]
+                bar_inactive_color:[0,0,0,0]
+                effect_cls:'ScrollEffect'
+                BoxLayout:
+                    size_hint_y:None
+                    height:self.minimum_height
+                    orientation: 'vertical'
+                    padding: ('10dp', '0dp', '10dp', '0dp')
+                    ToolBar:
+
+                    BoxLayout:
+                        size_hint_y: None
+                        height: ((len(grid.children)+1)/2)*dp(70)
+                        GridLayout:
+                            cols:2
+                            rows:3
+                            id:grid
+                            spacing: '10dp'
+                    BoxLayout:
+                        size_hint_y:None
+                        height:self.minimum_height
+                        id:content
+                        orientation: 'vertical'
+                    Widget:
+                        size_hint_y:None
+                        height:'200dp'
+        Screen:
+            name:'libs'
+            Button:
+                text:'libs'
+    FloatLayout:
+        size_hint:None, None
+        size:0, 0
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: [1, 1, 1, 1]
+                Rectangle:
+                    size:self.width, self.height + dp(5)
+                    pos:self.x, self.y
+                    texture:
+                        root.create_degrade((
+                        [0, 0, 0, 0], [18, 18, 18, 100], [18, 18, 18, 255]),\
+                        (7, 60))
+            orientation:'vertical'
+            size_hint:None, None
+            size:root.width, self.minimum_height
+            pos:root.pos
+            AnchorLayout:
+                padding: ('5dp', '5dp', '5dp', '5dp')
+                size_hint_y:None
+                height:'65dp'
+                BoxLayout:
+                    orientation: 'vertical'
+                    BoxLayout:
+                        canvas:
+                            Color:
+                                rgba:get_color_from_hex('#3d3b3b')
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[dp(5), dp(5), dp(5), dp(5)]
+                        AnchorLayout:
+                            padding:[dp(15), dp(10), dp(25), dp(10)]
+                            size_hint_x:None
+                            width:'70dp'
+                            RoudedImage:
+                                width:'40dp'
+                                source:'assets/playlist-icon/elliot.jfif'
+                                radius:[dp(5), dp(5), dp(5), dp(5)]
+                        Label:
+                            text:'[b]Seja Luz - Live Session[/b]\nGood Vibe'
+                            markup:True
+                            size_hint_x:None
+                            width:'150dp'
+                        Widget:
+                        BoxLayout:
+                            size_hint_x:None
+                            width:'120dp'
+                            Icon:
+                                img:'assets/icons/new-pc.png'
+                            Icon:
+                                img:'assets/icons/heart.png'
+                            Icon:
+                                img:'assets/icons/play-button.png'
+                        Widget:
+                            size_hint_x:None
+                            width:'10dp'
+                    Widget:
+                        size_hint_y:None
+                        height:'3dp'
+                        canvas:
+                            Color:
+                                rgba:[1, 1, 1, 1]
+                            RoundedRectangle:
+                                pos:self.x+dp(5), self.y
+                                size:dp(30), self.height
+                                radius:[dp(2), dp(2), dp(2), dp(2)]
+                            Color:
+                                rgba:get_color_from_hex('#484747')
+                            RoundedRectangle:
+                                pos:self.x+dp(35), self.y
+                                size:self.width-dp(40), self.height
+                                radius:[dp(2), dp(2), dp(2), dp(2)]
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height:'50dp'
+                Widget:
+                    size_hint_y:None
+                    height:'7dp'
+                BoxLayout:
+                    BoxLayout:
+                        orientation: 'vertical'
+                        on_touch_down:
+                            screens.current = 'home' if self.collide_point(*args[1].pos) else screens.current
+                        Icon:
+                            img:'assets/icons/home.png'
+                        Label:
+                            text:'Inicio'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        on_touch_down:
+                            screens.current = ('search'if screens.current != 'search' else 'busca') \
+                            if self.collide_point(*args[1].pos) else screens.current
+                        Icon:
+                            img:'assets/icons/search.png'
+                        Label:
+                            text:'Buscar'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        on_touch_down:
+                            screens.current = 'libs' if self.collide_point(*args[1].pos) else screens.current
+                        Icon:
+                            img:'assets/icons/library.png'
+                        Label:
+                            text:'Sua Biblioteca'
