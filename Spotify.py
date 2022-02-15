@@ -1,7 +1,6 @@
 from kivy.config import Config
 Config.set('graphics', 'maxfps', '80')
 
-
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
@@ -12,13 +11,11 @@ from kivy.lang.builder import Builder
 from kivy.graphics.texture import Texture
 from kivy.clock import Clock
 from kivy.properties import ObjectProperty, StringProperty, ListProperty
-from kivy.metrics import dp, sp
-from kivy.utils import get_color_from_hex, rgba
-from time import time
+from kivy.metrics import dp
+from kivy.utils import get_color_from_hex
+from utils import icon
 
-tmp = time()
 Builder.load_file('Spotify.kv')
-print('demorou: ', time()-tmp)
 
 class Body(BoxLayout):
     
@@ -26,7 +23,7 @@ class Body(BoxLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        tmp = time()
+
         self.playlists = (('Pisadinha', 'assets/playlist-icon/raimundos.jpg'), ('Akon', 'assets/playlist-icon/mamonas.jpg'),
                           ('Indie', 'assets/playlist-icon/redhot.jpg'), ('Emoção', 'assets/playlist-icon/akon.jfif'),
                           ('182', 'assets/playlist-icon/engenheiros.jpg'), ('Fabio', 'assets/playlist-icon/elliot.jfif'))
@@ -37,7 +34,7 @@ class Body(BoxLayout):
                 playlist = RecentPlayList(name_playlist=name, source=local)
                 self.ids.buscaRecent.add_widget(playlist)
         
-        for _ in range(10):
+        for _ in range(5):
             self.ids.content.add_widget(RootNameNoIcon(self.playlists))
             self.ids.content.add_widget(RootNameIcon(self.playlists))
         
@@ -47,8 +44,6 @@ class Body(BoxLayout):
                     'Rock', get_color_from_hex('#e51e31')
             )
             self.ids.box_search.add_widget(card)
-        
-        print('demorou: ', time()-tmp)
 
     def gradient(self, rgba1, rgba2, area):
         colors = []
@@ -106,7 +101,6 @@ class SearchDownload(BoxLayout):
         super().__init__(**kwargs)
         self.search = Downloads()
         self.add_widget(self.search)
-        # Clock.schedule_interval(self.change_pos, 1/20)
     
     def change_pos(self, *args):
         if self.scroll is None or self.box is None:
@@ -156,7 +150,7 @@ class MyScrollView(ScrollView):
         super().__init__(**kwargs)
         for name, local in playlists:
             playlist = RectanglePlayList(playlist_name=name, playlist_source=local,
-                                         icon_source='assets/icons/down-arrow.png')
+                                         icon_source=icon('send-down-green'))
             self.ids.box.add_widget(playlist)
 
 class RecommendedPlayList(BoxLayout):
@@ -177,8 +171,10 @@ class RoudedImage(Widget):
         Clock.schedule_once(self.create_texture, 1)
 
     def create_texture(self, *args):
-        image = Image(source=self.source, allow_stretch=True, keep_ratio=False, 
-                      size_hint=(None, None), size=self.size)
+        image = Image(
+            source=self.source, allow_stretch=True, keep_ratio=False, 
+            size_hint=(None, None), size=self.size,
+        )
         self.texture = image.texture
 
 class MusicPlayer(App):

@@ -1,4 +1,5 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#: import icon utils.icon
 
 <RoudedImage>
     source: ''
@@ -115,11 +116,11 @@
             padding:[0, 0, dp(25), 0]
             spacing: '40dp'
             Icon:
-                img:'assets/icons/bell-boll.png'
+                img:icon('bell-boll')
             Icon:
-                img:'assets/icons/time-clock.png'
+                img:icon('relogio')
             Icon:
-                img:'assets/icons/settings.png'
+                img:icon('engrenagem')
 
 <RootNameNoIcon>:
     orientation: 'vertical'
@@ -155,7 +156,7 @@
             width:'70dp'
             padding: ('5dp', '5dp', '5dp', '5dp')
             Image:
-                source:'assets/icons/play.png'
+                source:icon('play-play')
         AnchorLayout:
             anchor_y:'center'
             padding:[dp(10), 0, 0, dp(10)]
@@ -211,7 +212,7 @@
                     color:get_color_from_hex('#a0a0a0')
                 Widget:
         Icon:
-            img:'assets/icons/delete.png'
+            img:icon('delete')
             size_hint_x:None
             width:'40dp'
             icon_size:'35dp', '35dp'
@@ -286,7 +287,7 @@
         size_hint:None, None
         size:root.size
         Icon:
-            img:'assets/icons/search.png'
+            img:icon('search')
             size_hint_x:None
             width:'55dp'
             color:get_color_from_hex('#484747')
@@ -340,7 +341,7 @@
                         Widget:
                             size_hint_x:0.65
                         Icon:
-                            img:'assets/icons/camera.png'
+                            img:icon('camera')
                             size_hint_x:None
                             width:'40dp'
                             color:[1, 1, 1, 1]
@@ -532,11 +533,11 @@
                             size_hint_x:None
                             width:'120dp'
                             Icon:
-                                img:'assets/icons/new-pc.png'
+                                img:icon('pc-grey')
                             Icon:
-                                img:'assets/icons/heart.png'
+                                img:icon('heart-white-line')
                             Icon:
-                                img:'assets/icons/play-button.png'
+                                img:icon('play-white')
                         Widget:
                             size_hint_x:None
                             width:'10dp'
@@ -568,24 +569,30 @@
                         orientation: 'vertical'
                         on_touch_down:
                             screens.current = 'home' if self.collide_point(*args[1].pos) else screens.current
+                            icon_home.img = icon('home-boll') if self.collide_point(*args[1].pos) else icon('home')
                         Icon:
-                            img:'assets/icons/home.png'
+                            id:icon_home
+                            img:icon('home-boll')
                         Label:
                             text:'Inicio'
                     BoxLayout:
                         orientation: 'vertical'
                         on_touch_down:
-                            screens.current = ('search'if screens.current != 'search' else 'busca') \
+                            screens.current = ('search' if screens.current != 'search' else 'busca') \
                             if self.collide_point(*args[1].pos) else screens.current
+                            icon_lupa.img = icon('lupa-boll') if self.collide_point(*args[1].pos) else icon('lupa-grey')
                         Icon:
-                            img:'assets/icons/search.png'
+                            id:icon_lupa
+                            img:icon('lupa-grey')
                         Label:
                             text:'Buscar'
                     BoxLayout:
                         orientation: 'vertical'
                         on_touch_down:
                             screens.current = 'libs' if self.collide_point(*args[1].pos) else screens.current
+                            icon_lib.img = icon('bars') if self.collide_point(*args[1].pos) else icon('playlists')
                         Icon:
-                            img:'assets/icons/library.png'
+                            id:icon_lib
+                            img:icon('playlists')
                         Label:
                             text:'Sua Biblioteca'
