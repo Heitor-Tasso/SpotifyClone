@@ -8,11 +8,10 @@ Caso queira dar uma olhada na PlayList:
  - PlayList https://youtube.com/playlist?list=PLz7mQFeTpQVlH-Mce68_AeQlK-YbvMkp3
 
 # Primeira Tela
-![IMG One](examples/one.png)
-![IMG Two](examples/two.png)
+<img src="examples/1.jpg" align="center" height="600">
 
 # Tela de Busca
-![IMG Three](examples/three.png)
+<img src="examples/2.jpg" align="center" height="600">
 
 # Tela de buscas recentes
-![IMG Four](examples/four.png)
+<img src="examples/3.jpg" align="center" height="600">

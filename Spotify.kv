@@ -72,6 +72,8 @@
     bar_color:[0,0,0,0]
     bar_inactive_color:[0,0,0,0]
     effect_cls:'ScrollEffect'
+    do_scroll_x: True
+    do_scroll_y: False
     BoxLayout:
         size_hint_x:None
         width:self.minimum_width
@@ -350,6 +352,8 @@
                     bar_color:[0,0,0,0]
                     bar_inactive_color:[0,0,0,0]
                     effect_cls:'ScrollEffect'
+                    do_scroll_y: True
+                    do_scroll_x: False
                     BoxLayout:
                         orientation:'vertical'
                         size_hint_y:None
@@ -407,6 +411,8 @@
                     id:scroll
                     effect_cls:'ScrollEffect'
                     on_scroll_y: downd.change_pos()
+                    do_scroll_y: True
+                    do_scroll_x: False
                     BoxLayout:
                         size_hint_y:None
                         height:self.minimum_height
@@ -457,6 +463,8 @@
                 bar_color:[0,0,0,0]
                 bar_inactive_color:[0,0,0,0]
                 effect_cls:'ScrollEffect'
+                do_scroll_x: False
+                do_scroll_y: True
                 BoxLayout:
                     size_hint_y:None
                     height:self.minimum_height
